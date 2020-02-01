@@ -1,0 +1,74 @@
+* {
+  outline: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.App {
+  width: 500px;
+  margin: 20px auto;
+  background: #f1f1f2;
+}
+
+.App .form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.App .form input {
+  width: 100%;
+  padding: 10px 0 10px 10px;
+  font-size: 14px;
+}
+
+.App .form button {
+  padding: 10px 40px;
+  font-size: 16px;
+  border: 0;
+  background: #333;
+  color: #fff;
+}
+
+.App ul {
+  list-style-type: none;
+  padding-inline-start: 0;
+  margin: 0;
+}
+
+.App ul li {
+  padding: 7px 10px;
+}
+
+.App ul li:nth-child(2n) {
+  background: #ccc;
+}
+
+.App ul li.completed {
+  text-decoration: line-through;
+  color: black !important;
+}
+
+.App ul li.pastdue {
+  color: crimson;
+}
+
+.App ul li h3 {
+  margin: 10px 0;
+}
+
+.App ul li .meta {
+  color: grey;
+  font-size: 12px;
+  font-style: italic;
+  display: flex;
+  justify-content: space-between;
+}
+
+.App .clear-button button {
+  width: 100%;
+  padding: 10px 40px;
+  font-size: 16px;
+  border: 0;
+  background: #333;
+  color: #fff;
+}
