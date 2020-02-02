@@ -1,4 +1,5 @@
 import React, { useReducer, useState } from "react";
+import moment from "moment";
 import { INITIAL_STATE, reducer } from "./reducers";
 import "./App.css";
 
@@ -7,6 +8,17 @@ function App() {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
   const { toDoList, total } = state;
+
+  const addToList = input =>
+    dispatch({
+      type: "ADD_TODO",
+      payload: {
+        id: Date.now(),
+        title: input,
+        completed: false,
+        due: moment().add(3, "days")
+      }
+    });
 
   const toggleComplete = id =>
     dispatch({ type: "TOGGLE_COMPLETE", payload: id });
@@ -20,15 +32,7 @@ function App() {
         className="form"
         onSubmit={e => {
           e.preventDefault();
-          dispatch({
-            type: "ADD_TODO",
-            payload: {
-              id: Date.now(),
-              title: input,
-              completed: false,
-              due: new Date(new Date().setDate(new Date().getDate() + 1))
-            }
-          });
+          input ? addToList(input) : alert("You must type something");
           setInput("");
         }}
       >
@@ -39,7 +43,7 @@ function App() {
         {toDoList.length === 0 ? (
           <h3>There is no item in the list.</h3>
         ) : (
-          <h3>Total {total} items</h3>
+          <h3>You have total {total} items in your to-do list</h3>
         )}
         {toDoList.map(todo => (
           <li
@@ -53,10 +57,10 @@ function App() {
             key={todo.id}
             onClick={() => toggleComplete(todo.id)}
           >
-            <h3>{todo.title}</h3>
+            <h4>{todo.title}</h4>
             <div className="meta">
-              <span>Due: {todo.due.toDateString()}</span>
-              {todo.due < Date.now() && !todo.completed ? (
+              <span>due {todo.due.endOf("day").fromNow()}</span>
+              {todo.due < moment() && !todo.completed ? (
                 <span>past due</span>
               ) : null}
             </div>

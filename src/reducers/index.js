@@ -1,22 +1,24 @@
+import moment from "moment";
+
 export const INITIAL_STATE = {
   toDoList: [
     {
       id: 1,
       title: "Buy groceries",
       completed: false,
-      due: new Date(2020, 0, 29, 11, 1)
+      due: moment().subtract(1, "days")
     },
     {
       id: 2,
       title: "Pay bills",
       completed: false,
-      due: new Date(2020, 0, 30, 11, 1)
+      due: moment().add(1, "days")
     },
     {
       id: 3,
       title: "Go to movies",
       completed: false,
-      due: new Date(2020, 0, 31, 11, 1)
+      due: moment().add(2, "weeks")
     }
   ],
   total: 3
@@ -25,13 +27,12 @@ export const INITIAL_STATE = {
 export const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_TODO":
-      return action.payload.title
-        ? {
-            ...state,
-            toDoList: [...state.toDoList, action.payload],
-            total: state.total + 1
-          }
-        : state;
+      return {
+        ...state,
+        toDoList: [...state.toDoList, action.payload],
+        total: state.total + 1
+      };
+
     case "TOGGLE_COMPLETE":
       return {
         ...state,

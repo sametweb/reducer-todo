@@ -1,12 +1,21 @@
 * {
   outline: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-stroke: 0.45px;
+  -webkit-text-stroke: 0.45px rgba(0, 0, 0, 0.1);
+  text-shadow: inherit 0px 1px 1px;
 }
 
 .App {
   width: 500px;
   margin: 20px auto;
   background: #f1f1f2;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: #bbb 0 0px 20px;
 }
 
 .App .form {
@@ -19,6 +28,10 @@
   width: 100%;
   padding: 10px 0 10px 10px;
   font-size: 14px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: 0;
+  border-bottom: 1px solid #ddd;
 }
 
 .App .form button {
@@ -27,6 +40,8 @@
   border: 0;
   background: #333;
   color: #fff;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .App ul {
@@ -35,16 +50,29 @@
   margin: 0;
 }
 
-.App ul li {
-  padding: 7px 10px;
+.App ul h3 {
+  margin: 30px 0 10px 0;
+  font-size: 16px;
+  font-weight: 300;
 }
 
-.App ul li:nth-child(2n) {
-  background: #ccc;
+.App ul li {
+  padding: 7px 10px;
+  border-top: 1px solid #ccc;
+}
+
+.App ul li:last-child {
+  border-bottom: 1px solid #ccc;
+}
+
+.App ul li h4 {
+  margin: 0;
+  padding: 10px 0;
+  font-weight: 500;
 }
 
 .App ul li.completed {
-  text-decoration: line-through;
+  text-decoration: line-through solid black;
   color: black !important;
 }
 
@@ -58,10 +86,14 @@
 
 .App ul li .meta {
   color: grey;
-  font-size: 12px;
-  font-style: italic;
+  font-size: 14px;
+  font-weight: 300;
   display: flex;
   justify-content: space-between;
+}
+
+.App .clear-button {
+  padding: 20px 0 0 0;
 }
 
 .App .clear-button button {
@@ -71,4 +103,5 @@
   border: 0;
   background: #333;
   color: #fff;
+  border-radius: 10px;
 }
